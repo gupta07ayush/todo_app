@@ -24,6 +24,11 @@ jobs:
         run: |
           docker build -t ayushacr.azurecr.io/todo_app:latest .
 
+      - name : Tag Docker Image
+        run: | 
+          docker tag ayushacr.azurecr.io/todo_app:${{github.sha}} ayushacr.azurecr.io/todo_app:latest
+
       - name: Push Docker Image
         run: |
+          docker push ayushacr.azurecr.io/todo_app:${{github.sha}}
           docker push ayushacr.azurecr.io/todo_app:latest
