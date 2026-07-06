@@ -1,0 +1,29 @@
+name: Build and Push Docker Image
+
+on:
+push:
+branches:
+- main
+
+jobs:
+build:
+runs-on: ubuntu-latest
+
+steps:
+  - name: Checkout Code
+    uses: actions/checkout@v4
+
+  - name: Login to Azure Container Registry
+    uses: docker/login-action@v3
+    with:
+      registry: ayushacr.azurecr.io
+      username: ${{ secrets.ACR_USERNAME }}
+      password: ${{ secrets.ACR_PASSWORD }}
+
+  - name: Build Docker Image
+    run: |
+      docker build -t ayushacr.azurecr.io/todo_app:latest .
+
+  - name: Push Docker Image
+    run: |
+      docker push ayushacr.azurecr.io/todo_app:latest

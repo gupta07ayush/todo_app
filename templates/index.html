@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Todo List</title>
-    <link rel="stylesheet" hred="{{ url_for('static', filename='style.css') }}"
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 <body>
@@ -12,7 +12,7 @@
         <h1> My Todo List 💕 </h1>
         
         <form method="POST" class="add-form">
-            <input type="text", name="task", placeholder="What needs to be done?"" required>
+            <input type="text" name="task" placeholder="What needs to be done?" required>
             <button type="submit">Add Task</button>
         </form>
 
